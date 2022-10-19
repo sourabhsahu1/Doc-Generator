@@ -17,7 +17,8 @@ node() {
     stage('docker-build') {
             sh '''
                 # docker build -f <location-of-docker-file> -t <tag-of-docker-image> <context-for-docker-image>
-                docker build -f src/Dockerfile.prod -t $docker_server/$docker_repo:$commit_id .
+                cd src
+                docker build -f Dockerfile -t $docker_server/$docker_repo:$commit_id .
                 '''
     }
 
